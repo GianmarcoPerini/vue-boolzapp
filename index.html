@@ -10,51 +10,71 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="overflow-hidden">
 
     <div id="root">
         <div class="container">
             <div class="row vh-100">
-                <div class="user col-8 p-0">
-                    <div class="user-name col-12 d-flex align-items-center pe-3 pt-3 pb-3">
+                <div class="user col-3 p-0">
+                    <div class="user-name col-12 d-flex align-items-center pe-3 border-end">
                         <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_1.jpg" alt=""></div>
                         <p class="fs-4 fw-bold m-0 flex-grow-1">Nome Utente</p>
                         <i class="fas fa-redo-alt"></i>
                         <i class="fas fa-comment-alt ps-3 pe-3"></i>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
-                    <div class="is-online col-12 d-flex align-items-center pt-2 pb-2">
+                    <div class="is-online col-12 d-flex align-items-center">
                         <i class="fas fa-bell-slash"></i>
                         <div class="txt m-0">
                             <p class="mb-1"> Ricevi notifiche di nuovi messaggi</p>
                             <p class="sub-t text-secondari m-0">Attiva notifiche desktop</p>    
                         </div>
                     </div>
-                    <div class="search col-12 pt-3 pb-3">
+                    <div class="search col-12 mt-2">
                         <div class="search-input d-flex align-items-center">
                             <i class="fas fa-search pe-2 fs-4"></i>
-                            <input class="w-100 rounded-pill" type="text" placeholder="  Cerca o inizia una nuova chat">
+                            <input class="rounded-3 border-0" type="text" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                     <div class="chat">
-                        <div class="user-id d-flex pt-2 pb-2">
+                        <div class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in contacts" :class=" (count == index) ? 'active' : '' ">
                             <div class="user-img">
-                                <img class="w-100 rounded-circle" src="img/avatar_1.jpg" alt="">
+                                <img class="w-100 rounded-circle" :src=" 'img/avatar' + contact.avatar + '.jpg' ">
                             </div>
-                            <div class="w-100 txt-chat d-flex justify-content-between">
+                            <div @click="goTo(index)" class="w-100 txt-chat d-flex justify-content-between">
                                 <div class="m1">
-                                    <p class="m-0">Name</p>
-                                    <p class="m-0">Last message</p></div>
+                                    <p class="m-0">{{contact.name}}</p>
+                                    <p class="over-txt transparency-txt m-0">{{contact.messages[contact.messages.length - 1].text}}</p></div>
                                 <div class="m2">
-                                    <p class="pe-3">date</p>
+                                    <p class="transparency-txt pe-3">{{contact.messages[contact.messages.length - 1].date}}</p>
                                 </div>
                                 
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <!-- <div class="message col-8"></div> -->
+                <div class="message col-9 p-0">
+                    <div class="user-name col-12 d-flex align-items-center pe-3">
+                        <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_1.jpg" alt=""></div>
+                        <p class="fs-4 fw-bold m-0 flex-grow-1">Nome Utente</p>
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip ps-3 pe-3"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <div class="chat-live overflow-auto">
+                        <div v-for="(contact, index) in contacts[count]">
+                            <p>{{contact}}</p>
+                        </div>
+                        <div class="recived-box">
+                            <p class="recived float-end">come stai</p>
+                        </div>
+                    </div>
+                    <div class="chat-string d-flex justify-content-evenly align-items-center">
+                        <i class="far fa-smile fs-4  text-muted"></i>
+                        <input class="ms-3 fs-6 h-50 rounded border-0" type="text" placeholder="Scrivi un messaggio...">
+                        <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

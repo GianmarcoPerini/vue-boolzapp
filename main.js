@@ -1,5 +1,5 @@
 var app = new Vue({
-    el: '#app',
+    el: '#root',
     data: {
         contacts: [
             {
@@ -87,8 +87,13 @@ var app = new Vue({
                 ],
             },
         ],
+        count: 0
     },
-    methods:{},
+    methods:{
+        goTo: function(x){
+            this.count = x
+        }
+    },
 })
 
 

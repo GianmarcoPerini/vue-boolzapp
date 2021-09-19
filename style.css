@@ -1,7 +1,6 @@
 .user{
     height: 100%;
-    /* height: 500px; */
-    background-color: whitesmoke
+    background-color: #eaeaea
 }
 
 .user-img{
@@ -10,12 +9,17 @@
     margin: 0 10px;
 }
 
+.user-name{
+    height: 10%;
+}
+
 .user-name i{
-    color: rgba(0, 0, 0, 0.3)
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .is-online{
-    background-color: #8edafc
+    background-color: #8edafc;
+    height: 10%;
 }
 
 .is-online i{
@@ -36,22 +40,36 @@
 
 .search{
     color: rgba(0, 0, 0, 0.2);
+    height: 10%;
+    margin: 0 10px;
+    width: 100%
 }
 
 .search input{
     color: rgba(0, 0, 0, 0.5);
     font-size: 12px;
-    padding: 7px
+    padding: 7px;
+    width: calc(100% - 50px)
 }
 
 
 .chat{
     height: 300px;
     overflow-y: auto;
+    height: 70%;
 }
 
+.transparency-txt{
+    color: rgba(0, 0, 0, 0.2);
+    font-size: .75em;
+}
 
-
+.over-txt{
+    text-overflow:"...";
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 
 
@@ -59,5 +77,48 @@
 
 .message{
     height: 100%;
-    background-color: blue
+    background-color: #eaeaea
+}
+
+.chat-live{
+    height: 80%;
+    background-color: red;
+    background-image: url(img/mine.jpg);
+    background-repeat: repeat;
+}
+
+.chat-string{
+    height: 10%;
+    background-color: #f3eeea;
+}
+
+.chat-string input{
+    width: 80%;
+}
+
+
+
+.sent{
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+    width: 40%;
+}
+
+.recived{
+    background-color: #d5f9ba;
+    padding: 10px;
+    text-align: right;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.recived-box,
+.sent-box{
+    padding: 10px;
+}
+
+.active{
+    background-color: #f2fbff;
 }
