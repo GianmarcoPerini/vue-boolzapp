@@ -88,7 +88,8 @@ var app = new Vue({
             },
         ],
         msg: '',
-        count: 0
+        count: 0,
+        searched: ''
     },
     methods:{
         goTo: function(index){
@@ -105,11 +106,17 @@ var app = new Vue({
                 },
                 this.contacts[index].messages.push(newMessage)
                 this.msg = ''
+                setTimeout(()=> {
+                    newMessage = {
+                        date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
+                        text: 'Ok',
+                        status: 'received'
+                    },
+                    this.contacts[index].messages.push(newMessage)
+                },5000)           
             }
         },
-        log: function(){
-            console.log(this)
-        }
+
 
     },
 })
