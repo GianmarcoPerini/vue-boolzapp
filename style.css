@@ -1,6 +1,10 @@
 .user{
     height: 100%;
-    background-color: #eaeaea
+    background-color: #ffffff
+}
+
+.user-id:hover{
+    background-color: #e9ebeb
 }
 
 .user-img{
@@ -11,6 +15,11 @@
 
 .user-name{
     height: 10%;
+    background-color: #eaeaea
+}
+
+.user .user-name{
+    border-right: 1px solid #b1b1b15b
 }
 
 .user-name i{
@@ -40,7 +49,7 @@
 
 .search{
     color: rgba(0, 0, 0, 0.2);
-    height: 10%;
+    height: 5%;
     margin: 0 10px;
     width: 100%
 }
@@ -56,7 +65,7 @@
 .chat{
     height: 300px;
     overflow-y: auto;
-    height: 70%;
+    height: 75%;
 }
 
 .transparency-txt{
@@ -85,6 +94,7 @@
     background-color: red;
     background-image: url(img/mine.jpg);
     background-repeat: repeat;
+    padding: 20px 30px;
 }
 
 .chat-string{
@@ -96,29 +106,35 @@
     width: 80%;
 }
 
-
+.received{
+    margin-right: auto;
+    margin-bottom: 0;
+    width: 40%;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 12px;
+    border-radius: 10px;
+}
 
 .sent{
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: left;
+    margin-left: auto;
+    margin-bottom: 0;
     width: 40%;
-}
-
-.recived{
     background-color: #d5f9ba;
-    padding: 10px;
-    text-align: right;
+    padding: 12px;
     border-radius: 10px;
-    width: 40%;
-}
-
-.recived-box,
-.sent-box{
-    padding: 10px;
 }
 
 .active{
-    background-color: #f2fbff;
+    background-color: #7982b146;
+}
+
+.none{
+    display: none;
+}
+
+
+
+.pir{
+    font-size: 10px
 }

@@ -16,8 +16,8 @@
         <div class="container">
             <div class="row vh-100">
                 <div class="user col-3 p-0">
-                    <div class="user-name col-12 d-flex align-items-center pe-3 border-end">
-                        <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_1.jpg" alt=""></div>
+                    <div class="user-name col-12 d-flex align-items-center pe-3">
+                        <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_io.jpg"></div>
                         <p class="fs-4 fw-bold m-0 flex-grow-1">Nome Utente</p>
                         <i class="fas fa-redo-alt"></i>
                         <i class="fas fa-comment-alt ps-3 pe-3"></i>
@@ -55,23 +55,30 @@
                 </div>
                 <div class="message col-9 p-0">
                     <div class="user-name col-12 d-flex align-items-center pe-3">
-                        <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_1.jpg" alt=""></div>
-                        <p class="fs-4 fw-bold m-0 flex-grow-1">Nome Utente</p>
+                        <div class="user-img"><img class="w-100 rounded-circle" :src=" 'img/avatar' + contacts[count].avatar + '.jpg' "></div>
+                        <p class="fs-4 fw-bold m-0 flex-grow-1">{{contacts[count].name}}</p>
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip ps-3 pe-3"></i>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                     <div class="chat-live overflow-auto">
-                        <div v-for="(contact, index) in contacts[count]">
-                            <p>{{contact}}</p>
+                        <div v-for="(message, index) in contacts[count].messages">
+                            <div class="status-box d-flex flex-wrap">
+                                <p :class="(message.status == 'sent') ? 'sent' : 'none' ">{{message.text}} <br>
+                                    <span class="float-end transparency-txt">{{message.date}}</span>
+                                </p>
+                            </div>
+                            <div class="status-box d-flex flex-wrap m-2">
+                                <p :class="(message.status == 'received') ? 'received' : 'none' ">{{message.text}} <br>
+                                    <span class="float-end transparency-txt">{{message.date}} </span></p>
+                            </div>
+                            
                         </div>
-                        <div class="recived-box">
-                            <p class="recived float-end">come stai</p>
-                        </div>
+                        
                     </div>
                     <div class="chat-string d-flex justify-content-evenly align-items-center">
                         <i class="far fa-smile fs-4  text-muted"></i>
-                        <input class="ms-3 fs-6 h-50 rounded border-0" type="text" placeholder="Scrivi un messaggio...">
+                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." v-model="msg"  @keyup.enter="submit(msg, count)">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
                     </div>
                 </div>

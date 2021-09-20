@@ -87,12 +87,28 @@ var app = new Vue({
                 ],
             },
         ],
+        msg: '',
         count: 0
     },
     methods:{
         goTo: function(x){
             this.count = x
+        },
+
+        submit: function(message, index){
+            let d = new Date()
+            newMessage = {
+                date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
+                text: message,
+                status: 'recived'
+            },
+            this.contacts[index].messages.push(newMessage)
+            this.msg = ''
+        },
+        log: function(){
+            console.log(this)
         }
+
     },
 })
 
