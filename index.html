@@ -64,13 +64,9 @@
                     <div class="chat-live overflow-auto">
                         <div v-for="(message, index) in contacts[count].messages">
                             <div class="status-box d-flex flex-wrap">
-                                <p :class="(message.status == 'sent') ? 'sent' : 'none' ">{{message.text}} <br>
-                                    <span class="float-end transparency-txt">{{message.date}}</span>
+                                <p class="p-2" :class=" {received : (message.status == 'received'), sent : (message.status == 'sent')} ">{{message.text}} 
+                                    <span class="float-end transparency-txt mt-2">{{message.date}}</span>
                                 </p>
-                            </div>
-                            <div class="status-box d-flex flex-wrap m-2">
-                                <p :class="(message.status == 'received') ? 'received' : 'none' ">{{message.text}} <br>
-                                    <span class="float-end transparency-txt">{{message.date}} </span></p>
                             </div>
                             
                         </div>

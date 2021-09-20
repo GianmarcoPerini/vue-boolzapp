@@ -91,19 +91,21 @@ var app = new Vue({
         count: 0
     },
     methods:{
-        goTo: function(x){
-            this.count = x
+        goTo: function(index){
+            this.count = index
         },
 
         submit: function(message, index){
             let d = new Date()
-            newMessage = {
-                date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
-                text: message,
-                status: 'recived'
-            },
-            this.contacts[index].messages.push(newMessage)
-            this.msg = ''
+            if(this.msg.length > 0){
+                newMessage = {
+                    date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
+                    text: message,
+                    status: 'sent'
+                },
+                this.contacts[index].messages.push(newMessage)
+                this.msg = ''
+            }
         },
         log: function(){
             console.log(this)

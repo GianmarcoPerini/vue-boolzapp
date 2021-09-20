@@ -108,20 +108,18 @@
 
 .received{
     margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     width: 40%;
     background-color: #ffffff;
     text-align: left;
-    padding: 12px;
     border-radius: 10px;
 }
 
 .sent{
     margin-left: auto;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     width: 40%;
     background-color: #d5f9ba;
-    padding: 12px;
     border-radius: 10px;
 }
 
