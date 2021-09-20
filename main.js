@@ -89,7 +89,8 @@ var app = new Vue({
         ],
         msg: '',
         count: 0,
-        searched: ''
+        toFilter: ''
+
     },
     methods:{
         goTo: function(index){
@@ -117,7 +118,14 @@ var app = new Vue({
             }
         },
 
-
+        filter: function(){
+            this.contacts.forEach((el) => {
+                if(el.name.toLowerCase().includes(this.toFilter.toLowerCase()) == true){
+                    console.log(el.name);
+                    return el.name
+                }
+            })
+        }
     },
 })
 

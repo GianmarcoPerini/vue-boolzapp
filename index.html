@@ -13,6 +13,10 @@
 <body class="overflow-hidden">
 
     <div id="root">
+        <div class="background">
+            <div class="first-color"></div>
+            <div class="second-color"></div>
+        </div>
         <div class="container">
             <div class="row vh-100">
                 <div class="user col-3 p-0">
@@ -33,22 +37,21 @@
                     <div class="search col-12 mt-2">
                         <div class="search-input d-flex align-items-center">
                             <i class="fas fa-search pe-2 fs-4"></i>
-                            <input class="rounded-3 border-0" type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input class="rounded-3 border-0" type="text" placeholder="Cerca o inizia una nuova chat" v-model="toFilter">
                         </div>
                     </div>
                     <div class="chat">
-                        <div class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in contacts" :class=" (count == index) ? 'active' : '' ">
+                        <div class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in filter(toFilter)" :class=" (count == index) ? 'active' : '' ">
                             <div class="user-img">
                                 <img class="w-100 rounded-circle" :src=" 'img/avatar' + contact.avatar + '.jpg' ">
                             </div>
                             <div @click="goTo(index)" class="w-100 txt-chat d-flex justify-content-between">
                                 <div class="m1">
-                                    <p class="m-0">{{contact.name}}</p>
+                                    <p class="m-0">{{contact}}</p>
                                     <p class="over-txt transparency-txt m-0">{{contact.messages[contact.messages.length - 1].text}}</p></div>
                                 <div class="m2">
                                     <p class="transparency-txt pe-3">{{contact.messages[contact.messages.length - 1].date}}</p>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -70,7 +73,6 @@
                             </div>
                             
                         </div>
-                        
                     </div>
                     <div class="chat-string d-flex justify-content-evenly align-items-center">
                         <i class="far fa-smile fs-4  text-muted"></i>
@@ -81,7 +83,11 @@
             </div>
         </div>
     </div>
-    
+
+
+
+
+
 
     <script src="main.js"></script>
 </body>
