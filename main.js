@@ -24,6 +24,7 @@ let app = new Vue({
                     }
                 ],
             },
+
             {
                 name: 'Fabio',
                 avatar: '_2',
@@ -46,7 +47,7 @@ let app = new Vue({
                     }
                 ],
             },
-        
+
             {
                 name: 'Samuele',
                 avatar: '_3',
@@ -69,6 +70,7 @@ let app = new Vue({
                     }
                 ],
             },
+
             {
                 name: 'Luisa',
                 avatar: '_4',
@@ -87,17 +89,20 @@ let app = new Vue({
                 ],
             },
         ],
+
         msg: '',
         count: 0,
         toFilter: '',
+        fullScreen: true,
 
     },
+
     methods:{
         goTo: function(index){
             this.count = parseInt(index.split('_').join('') -1)
         },
 
-        submit: function(){
+        submit: function(thatCount){
             let d = new Date()
             if(this.msg.length > 0){
                 newMessage = {
@@ -113,7 +118,7 @@ let app = new Vue({
                         text: 'Ok',
                         status: 'received'
                     },
-                    this.contacts[this.count].messages.push(newMessage)
+                    this.contacts[thatCount].messages.push(newMessage)
                 },5000)           
             }
         },
