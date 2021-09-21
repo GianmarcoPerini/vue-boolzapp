@@ -96,7 +96,6 @@ let app = new Vue({
         msg: '',
         count: 0,
         toFilter: '',
-        fullScreen: true,
 
     },
 
@@ -128,11 +127,7 @@ let app = new Vue({
 
         filter: function(el){
             return el.name.toLowerCase().includes(this.toFilter.toLowerCase())
-        }
+        },
+
     },
 })
-
-
-
-
-// v-if="contact.name.toLowerCase().includes(toFilter.toLowerCase())"

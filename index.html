@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body class="overflow-hidden">
-
+    
     <div id="root">
         <div class="background">
             <div class="first-color"></div>
@@ -19,8 +19,7 @@
         </div>
         <div class="container">
             <div class="row vh-100">
-                <div class="user p-0" 
-                :class="(fullScreen == true) ? 'col-lg-3 col-md-12' : 'd-none' ">
+                <div class="user p-0 col-3">
                     <div class="user-name col-12 d-flex align-items-center pe-3">
                         <div class="user-img">
                             <img class="w-100 rounded-circle" src="img/avatar_io.jpg">
@@ -30,8 +29,7 @@
                         </p>
                         <i class="fas fa-redo-alt"></i>
                         <i class="fas fa-comment-alt ps-3 pe-3"></i>
-                        <i class="fas fa-ellipsis-v" 
-                        @click="fullScreen = !fullScreen"></i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </div>
                     <div class="is-online col-12 d-flex align-items-center">
                         <i class="fas fa-bell-slash"></i>
@@ -39,7 +37,7 @@
                             <p class="mb-1"> 
                                 Ricevi notifiche di nuovi messaggi
                             </p>
-                            <p class="sub-t text-secondari m-0">
+                            <p class="sub-text m-0">
                                 Attiva notifiche desktop
                             </p>    
                         </div>
@@ -81,10 +79,7 @@
                     </div>
                 </div>
                 <div class="message p-0 col">
-                    <div class="user-name col-12 d-flex align-items-center pe-3">
-                        <i class="fas fa-angle-left ms-3 fs-4 d-block d-lg-none"
-                            @click="fullScreen = !fullScreen">
-                        </i>
+                    <div class="user-name col-12 d-flex align-items-center pe-3"></i>
                         <div class="user-img">
                             <img class="w-100 rounded-circle" 
                             :src=" 'img/avatar' + contacts[count].avatar + '.jpg' ">
@@ -98,19 +93,17 @@
                             @click="fullScreen = !fullScreen">
                         </i>
                     </div>
-                    <div class="chat-live overflow-auto">
-                        <div v-for="(message, index) in contacts[count].messages">
+                    <div class="chat-live overflow-auto position-relative">
+                        <div class="" v-for="(message, index) in contacts[count].messages">
                             <div class="status-box d-flex flex-wrap">
-                                <p class="p-2 position-relative" 
+                                <div class="p-2"
                                     :class=" message.status">
-                                    {{message.text}} 
-                                    <span class="float-end transparency-txt mt-3">
+                                    <p>{{message.text}}</p>
+                                    <span class="float-end transparency-txt">
                                         {{message.date}}
                                     </span>
-                                    <div class="drop-down position-absolute">ds</div>
-                                    <i class="fas fa-angle-down angle position-absolute" @click=""></i>
-                                    
-                                </p>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

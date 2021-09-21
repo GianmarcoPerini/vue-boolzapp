@@ -1,3 +1,5 @@
+    /* BG */
+
 .background{
     width: 100%;
     height: 100vh;
@@ -16,7 +18,7 @@
 }
 
 
-
+    /* SEC_1    COL_1*/
 
 .user{
     height: 100%;
@@ -50,6 +52,8 @@
     color: rgba(0, 0, 0, 0.3);
 }
 
+    /* SEC_2 */
+
 .is-online{
     background-color: #8edafc;
     height: 10%;
@@ -67,9 +71,14 @@
     margin: 0 10px
 }
 
-.sub-t{
-    font-size: 12px
+.sub-text{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: underline;
 }
+
+
+    /* SEC_3 */
 
 .search{
     color: rgba(0, 0, 0, 0.2);
@@ -86,15 +95,13 @@
 }
 
 
+    /* SEC_4 */
+
+
 .chat{
     height: 300px;
     overflow-y: auto;
     height: 75%;
-}
-
-.transparency-txt{
-    color: rgba(0, 0, 0, 0.2);
-    font-size: .75em;
 }
 
 .over-txt{
@@ -106,12 +113,15 @@
 
 
 
-
+    /* SEC_1    COL_2 */
 
 .message{
     height: 100%;
     background-color: #eaeaea
 }
+
+
+    /* SEC_1 */
 
 .chat-live{
     height: 80%;
@@ -121,6 +131,8 @@
     padding: 20px 30px;
 }
 
+    /* SEC_2 */
+
 .chat-string{
     height: 10%;
     background-color: #f3eeea;
@@ -128,6 +140,13 @@
 
 .chat-string input{
     width: 80%;
+}
+
+    /* FUNCTIONAL CLASS */
+
+.transparency-txt{
+    color: rgba(0, 0, 0, 0.2);
+    font-size: .75em;
 }
 
 .received{
@@ -149,25 +168,4 @@
 
 .active{
     background-color: #7982b146;
-}
-
-.angle{
-    right: 10px;
-    top: 5px;
-    font-size: 1.2rem;
-    color: rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: all ease-in-out 100ms;
-    cursor: pointer;
-}
-
-.sent:hover .angle,
-.received:hover .angle{
-    opacity: 1;
-}
-
-.drop-down{
-    right: 0;
-    top: 0;
-    background-color: red;
 }
