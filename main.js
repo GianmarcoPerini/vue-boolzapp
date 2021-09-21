@@ -1,6 +1,9 @@
 let app = new Vue({
+
     el: '#root',
     data: {
+
+        name: 'Gianmarco',
         contacts: [
             {
                 name: 'Michele',
@@ -99,7 +102,7 @@ let app = new Vue({
 
     methods:{
         goTo: function(index){
-            this.count = parseInt(index.split('_').join('') -1)
+            this.count = index
         },
 
         submit: function(thatCount){
@@ -125,7 +128,10 @@ let app = new Vue({
 
         filter: function(){
             return this.contacts.filter((el) => {
-                if(el.name.toLowerCase().match(this.toFilter.toLowerCase())) return el
+                if(el.name.toLowerCase().includes(this.toFilter.toLowerCase()) == true){
+                    return true
+                }
+                return false
             })
         }
     },

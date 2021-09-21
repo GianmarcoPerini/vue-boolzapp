@@ -19,56 +19,93 @@
         </div>
         <div class="container">
             <div class="row vh-100">
-                <div class="user p-0" :class="(fullScreen == true) ? 'col-lg-3 col-md-12' : 'd-none' ">
+                <div class="user p-0" 
+                :class="(fullScreen == true) ? 'col-lg-3 col-md-12' : 'd-none' ">
                     <div class="user-name col-12 d-flex align-items-center pe-3">
-                        <div class="user-img"><img class="w-100 rounded-circle" src="img/avatar_io.jpg"></div>
-                        <p class="fs-4 fw-bold m-0 flex-grow-1">Nome Utente</p>
+                        <div class="user-img">
+                            <img class="w-100 rounded-circle" src="img/avatar_io.jpg">
+                        </div>
+                        <p class="fs-4 fw-bold m-0 flex-grow-1">
+                            {{name}}
+                        </p>
                         <i class="fas fa-redo-alt"></i>
                         <i class="fas fa-comment-alt ps-3 pe-3"></i>
-                        <i class="fas fa-ellipsis-v" @click="fullScreen = !fullScreen"></i>
+                        <i class="fas fa-ellipsis-v" 
+                        @click="fullScreen = !fullScreen"></i>
                     </div>
                     <div class="is-online col-12 d-flex align-items-center">
                         <i class="fas fa-bell-slash"></i>
                         <div class="txt m-0">
-                            <p class="mb-1"> Ricevi notifiche di nuovi messaggi</p>
-                            <p class="sub-t text-secondari m-0">Attiva notifiche desktop</p>    
+                            <p class="mb-1"> 
+                                Ricevi notifiche di nuovi messaggi
+                            </p>
+                            <p class="sub-t text-secondari m-0">
+                                Attiva notifiche desktop
+                            </p>    
                         </div>
                     </div>
                     <div class="search col-12 mt-2">
                         <div class="search-input d-flex align-items-center">
                             <i class="fas fa-search pe-2 fs-4"></i>
-                            <input class="rounded-3 border-0" type="text" placeholder="Cerca o inizia una nuova chat" v-model="toFilter">
+                            <input class="rounded-3 border-0" type="text" placeholder="Cerca o inizia una nuova chat"
+                            v-model="toFilter">
                         </div>
                     </div>
                     <div class="chat">
-                        <div @click="goTo(contact.avatar), fullScreen = !fullScreen" class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in filter()" :class=" (count == index) ? 'active' : '' ">
+                        <div @click="goTo(index)" 
+                            class="user-id d-flex pt-2 pb-2" 
+                            v-for="(contact, index) in contacts" 
+                            :class=" (count == index) ? 'active' : '' "
+                            v-if="contact.name.toLowerCase().includes(toFilter.toLowerCase())">
                             <div class="user-img">
-                                <img class="w-100 rounded-circle" :src=" 'img/avatar' + contact.avatar + '.jpg' ">
+                                <img class="w-100 rounded-circle"
+                                :src=" 'img/avatar' + contact.avatar + '.jpg' ">
                             </div>
                             <div class="w-100 txt-chat d-flex justify-content-between">
                                 <div class="m1">
-                                    <p class="m-0">{{contact.name}}</p>
-                                    <p class="over-txt transparency-txt m-0">{{contact.messages[contact.messages.length - 1].text}}</p></div>
+                                    <p class="m-0" >
+                                        {{contact.name}}
+                                    </p>
+                                    <p class="over-txt transparency-txt m-0">
+                                        {{contact.messages[contact.messages.length - 1].text}}
+                                    </p>
+                                </div>
                                 <div class="m2">
-                                    <p class="transparency-txt pe-3">{{contact.messages[contact.messages.length - 1].date}}</p>
+                                    <p class="transparency-txt pe-3">
+                                        {{contact.messages[contact.messages.length - 1].date}}
+                                    </p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="d-none" v-else>
+
                         </div>
                     </div>
                 </div>
                 <div class="message p-0 col">
                     <div class="user-name col-12 d-flex align-items-center pe-3">
-                        <i class="fas fa-angle-left ms-3 fs-4 d-block d-lg-none"  @click="fullScreen = !fullScreen"></i>
-                        <div class="user-img"><img class="w-100 rounded-circle" :src=" 'img/avatar' + contacts[count].avatar + '.jpg' "></div>
-                        <p class="fs-4 fw-bold m-0 flex-grow-1">{{contacts[count].name}}</p>
+                        <i class="fas fa-angle-left ms-3 fs-4 d-block d-lg-none"
+                            @click="fullScreen = !fullScreen">
+                        </i>
+                        <div class="user-img">
+                            <img class="w-100 rounded-circle" 
+                            :src=" 'img/avatar' + contacts[count].avatar + '.jpg' ">
+                        </div>
+                        <p class="fs-4 fw-bold m-0 flex-grow-1">
+                            {{contacts[count].name}}
+                        </p>
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip ps-3 pe-3"></i>
-                        <i class="fas fa-ellipsis-v" @click="fullScreen = !fullScreen"></i>
+                        <i class="fas fa-ellipsis-v" 
+                            @click="fullScreen = !fullScreen">
+                        </i>
                     </div>
                     <div class="chat-live overflow-auto">
                         <div v-for="(message, index) in contacts[count].messages">
                             <div class="status-box d-flex flex-wrap">
-                                <p class="p-2" :class=" {received : (message.status == 'received'), sent : (message.status == 'sent')} ">{{message.text}} 
+                                <p class="p-2" 
+                                :class=" message.status ">
+                                {{message.text}} 
                                     <span class="float-end transparency-txt mt-2">{{message.date}}</span>
                                 </p>
                             </div>
@@ -76,7 +113,9 @@
                     </div>
                     <div class="chat-string d-flex justify-content-evenly align-items-center">
                         <i class="far fa-smile fs-4  text-muted"></i>
-                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." v-model="msg"  @keyup.enter="submit(count)">
+                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." 
+                        v-model="msg" 
+                        @keyup.enter="submit(count)">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
                     </div>
                 </div>

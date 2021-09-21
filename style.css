@@ -147,12 +147,6 @@
     background-color: #7982b146;
 }
 
-.none{
-    display: none;
-}
-
-
-
-.pir{
-    font-size: 10px
+.visible{
+    display: none
 }
