@@ -23,6 +23,10 @@
     background-color: #ffffff
 }
 
+.user-id{
+    cursor: pointer;
+}
+
 .user-id:hover{
     background-color: #e9ebeb
 }
@@ -147,6 +151,23 @@
     background-color: #7982b146;
 }
 
-.visible{
-    display: none
+.angle{
+    right: 10px;
+    top: 5px;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all ease-in-out 100ms;
+    cursor: pointer;
+}
+
+.sent:hover .angle,
+.received:hover .angle{
+    opacity: 1;
+}
+
+.drop-down{
+    right: 0;
+    top: 0;
+    background-color: red;
 }

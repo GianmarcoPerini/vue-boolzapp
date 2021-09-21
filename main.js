@@ -126,13 +126,13 @@ let app = new Vue({
             }
         },
 
-        filter: function(){
-            return this.contacts.filter((el) => {
-                if(el.name.toLowerCase().includes(this.toFilter.toLowerCase()) == true){
-                    return true
-                }
-                return false
-            })
+        filter: function(el){
+            return el.name.toLowerCase().includes(this.toFilter.toLowerCase())
         }
     },
 })
+
+
+
+
+// v-if="contact.name.toLowerCase().includes(toFilter.toLowerCase())"
