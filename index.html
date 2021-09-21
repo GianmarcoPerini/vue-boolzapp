@@ -41,13 +41,13 @@
                         </div>
                     </div>
                     <div class="chat">
-                        <div class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in filter(toFilter)" :class=" (count == index) ? 'active' : '' ">
+                        <div class="user-id d-flex pt-2 pb-2" v-for="(contact, index) in filter()" :class=" (count == index) ? 'active' : '' ">
                             <div class="user-img">
                                 <img class="w-100 rounded-circle" :src=" 'img/avatar' + contact.avatar + '.jpg' ">
                             </div>
-                            <div @click="goTo(index)" class="w-100 txt-chat d-flex justify-content-between">
+                            <div @click="goTo(contact.avatar)" class="w-100 txt-chat d-flex justify-content-between">
                                 <div class="m1">
-                                    <p class="m-0">{{contact}}</p>
+                                    <p class="m-0">{{contact.name}}</p>
                                     <p class="over-txt transparency-txt m-0">{{contact.messages[contact.messages.length - 1].text}}</p></div>
                                 <div class="m2">
                                     <p class="transparency-txt pe-3">{{contact.messages[contact.messages.length - 1].date}}</p>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="chat-string d-flex justify-content-evenly align-items-center">
                         <i class="far fa-smile fs-4  text-muted"></i>
-                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." v-model="msg"  @keyup.enter="submit(msg, count)">
+                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." v-model="msg"  @keyup.enter="submit(count)">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
                     </div>
                 </div>

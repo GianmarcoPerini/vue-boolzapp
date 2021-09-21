@@ -1,4 +1,4 @@
-var app = new Vue({
+let app = new Vue({
     el: '#root',
     data: {
         contacts: [
@@ -89,23 +89,23 @@ var app = new Vue({
         ],
         msg: '',
         count: 0,
-        toFilter: ''
+        toFilter: '',
 
     },
     methods:{
         goTo: function(index){
-            this.count = index
+            this.count = parseInt(index.split('_').join('') -1)
         },
 
-        submit: function(message, index){
+        submit: function(){
             let d = new Date()
             if(this.msg.length > 0){
                 newMessage = {
                     date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
-                    text: message,
+                    text: this.msg,
                     status: 'sent'
                 },
-                this.contacts[index].messages.push(newMessage)
+                this.contacts[this.count].messages.push(newMessage)
                 this.msg = ''
                 setTimeout(()=> {
                     newMessage = {
@@ -113,20 +113,15 @@ var app = new Vue({
                         text: 'Ok',
                         status: 'received'
                     },
-                    this.contacts[index].messages.push(newMessage)
+                    this.contacts[this.count].messages.push(newMessage)
                 },5000)           
             }
         },
 
         filter: function(){
-            this.contacts.forEach((el) => {
-                if(el.name.toLowerCase().includes(this.toFilter.toLowerCase()) == true){
-                    console.log(el.name);
-                    return el.name
-                }
+            return this.contacts.filter((el) => {
+                if(el.name.toLowerCase().match(this.toFilter.toLowerCase())) return el
             })
         }
     },
 })
-
-
