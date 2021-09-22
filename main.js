@@ -93,6 +93,11 @@ let app = new Vue({
             },
         ],
 
+        dropDown: {isOpen: false},
+        
+            
+        
+
         msg: '',
         count: 0,
         toFilter: '',
@@ -100,15 +105,16 @@ let app = new Vue({
     },
 
     methods:{
+            // DOPO AVER CREATO UNA VARIABILE INIZIALIZZATA A 0 (count) LA FUNZIONE PRENDE L'INDICE CHE GLI VIENE PASSATO E FA SI CHE COUNT SIA UGALE A TALE INDICE
         goTo: function(index){
             this.count = index
         },
-
+            // INVIA IL DATO INSERITO NELL'INPUT PER POTER ESSERE VISUALIZZATO IN PAGINA
         submit: function(thatCount){
             let d = new Date()
             if(this.msg.length > 0){
                 newMessage = {
-                    date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
+                    date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getUTCSeconds()}`,
                     text: this.msg,
                     status: 'sent'
                 },
@@ -124,10 +130,14 @@ let app = new Vue({
                 },5000)           
             }
         },
-
+            // VERIFICA SE NELL'INPUT SONO INCLUSI CARATTERI DELL'ARRAY CONTACTS.NAME
         filter: function(el){
             return el.name.toLowerCase().includes(this.toFilter.toLowerCase())
         },
+
+        log: function(x){
+            console.log(x);
+        }
 
     },
 })

@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body class="overflow-hidden">
-    
+
     <div id="root">
         <div class="background">
             <div class="first-color"></div>
@@ -19,7 +19,12 @@
         </div>
         <div class="container">
             <div class="row vh-100">
+
+
+                <!-- USER NAME COLUMN -->
+
                 <div class="user p-0 col-3">
+                        <!-- SEC_USER NAME -->
                     <div class="user-name col-12 d-flex align-items-center pe-3">
                         <div class="user-img">
                             <img class="w-100 rounded-circle" src="img/avatar_io.jpg">
@@ -31,6 +36,7 @@
                         <i class="fas fa-comment-alt ps-3 pe-3"></i>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
+                        <!-- SEC_IS ONLINE -->
                     <div class="is-online col-12 d-flex align-items-center">
                         <i class="fas fa-bell-slash"></i>
                         <div class="txt m-0">
@@ -42,6 +48,7 @@
                             </p>    
                         </div>
                     </div>
+                        <!-- SEC_SEARCH -->
                     <div class="search col-12 mt-2">
                         <div class="search-input d-flex align-items-center">
                             <i class="fas fa-search pe-2 fs-4"></i>
@@ -49,6 +56,7 @@
                             v-model="toFilter">
                         </div>
                     </div>
+                        <!-- SEC_CHAT -->
                     <div class="chat">
                         <div class="user-id d-flex pt-2 pb-2"
                             @click="goTo(index)" 
@@ -60,16 +68,16 @@
                                 :src=" 'img/avatar' + contact.avatar + '.jpg' ">
                             </div>
                             <div class="w-100 txt-chat d-flex justify-content-between">
-                                <div class="m1">
-                                    <p class="m-0" >
+                                <div class="chat-id">
+                                    <p class="mb-2">
                                         {{contact.name}}
                                     </p>
-                                    <p class="over-txt transparency-txt m-0">
+                                    <p class="over-txt txt-grey fs-7 m-0">
                                         {{contact.messages[contact.messages.length - 1].text}}
                                     </p>
                                 </div>
-                                <div class="m2">
-                                    <p class="transparency-txt pe-3">
+                                <div class="temporal-data fs-7">
+                                    <p class="txt-grey pe-3">
                                         {{contact.messages[contact.messages.length - 1].date}}
                                     </p>
                                 </div>
@@ -78,8 +86,13 @@
                         <div class="d-none" v-else></div>
                     </div>
                 </div>
+
+
+                <!-- MESSAGE COLUMN -->
+
                 <div class="message p-0 col">
-                    <div class="user-name col-12 d-flex align-items-center pe-3"></i>
+                        <!-- SEC_USER NAME -->
+                    <div class="user-name col-12 d-flex align-items-center pe-3">
                         <div class="user-img">
                             <img class="w-100 rounded-circle" 
                             :src=" 'img/avatar' + contacts[count].avatar + '.jpg' ">
@@ -89,27 +102,33 @@
                         </p>
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip ps-3 pe-3"></i>
-                        <i class="fas fa-ellipsis-v" 
-                            @click="fullScreen = !fullScreen">
-                        </i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </div>
-                    <div class="chat-live overflow-auto position-relative">
+                        <!-- SEC_LIVE CHAT -->
+                    <div class="chat-live overflow-auto">
                         <div class="" v-for="(message, index) in contacts[count].messages">
+                                <!-- MESSAGES -->
                             <div class="status-box d-flex flex-wrap">
-                                <div class="p-2"
+                                    <!-- SINGLE MESSAGE -->
+                                <div class="p-2 position-relative"
+                                    v-for="el in dropDown"
                                     :class=" message.status">
-                                    <p>{{message.text}}</p>
-                                    <span class="float-end transparency-txt">
+                                    <i class="drop-click fas fa-angle-down position-absolute txt-grey fs-5"
+                                        @click="el = !el, log(el)">
+                                    </i>
+                                    <p>{{message.text}} {{el}}</p>
+                                    <span class="float-end txt-grey fs-7">
                                         {{message.date}}
                                     </span>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
+                        <!-- SEC_CHAT STRING -->
                     <div class="chat-string d-flex justify-content-evenly align-items-center">
                         <i class="far fa-smile fs-4  text-muted"></i>
-                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3" type="text" placeholder="Scrivi un messaggio..." 
+                        <input class="ms-3 fs-6 h-50 rounded border-0 ps-3"
+                        type="text" placeholder="Scrivi un messaggio..." 
                         v-model="msg" 
                         @keyup.enter="submit(count)">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>

@@ -142,11 +142,32 @@
     width: 80%;
 }
 
+    /* DROP DOWN */
+
+.drop-click{
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.drop{
+    width: 50px;
+    height: 50px;
+}
+
+.visible{
+    background-color: red;
+}
+
+
     /* FUNCTIONAL CLASS */
 
-.transparency-txt{
+.txt-grey{
     color: rgba(0, 0, 0, 0.2);
-    font-size: .75em;
+}
+
+.fs-7{
+    font-size: 0.75rem
 }
 
 .received{
