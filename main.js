@@ -93,14 +93,15 @@ let app = new Vue({
             },
         ],
 
-        dropDown: {isOpen: false},
+        
         
             
         
-
+        click: false,
         msg: '',
         count: 0,
         toFilter: '',
+        chatCounter: 0,
 
     },
 
@@ -137,7 +138,19 @@ let app = new Vue({
 
         log: function(x){
             console.log(x);
-        }
+        },
 
+        chatClick: function(x){
+            this.chatCounter = x
+            this.click = !this.click
+        },
+
+        cancel: function(x){
+            this.contacts[this.count].messages.splice(x, 1);
+            if(this.contacts[this.count].messages == 0) {
+                newMessage = {status: 'd-none'}
+                this.contacts[this.count].messages.push(newMessage)
+            }            
+        },
     },
 })

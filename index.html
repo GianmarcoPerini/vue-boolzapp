@@ -72,7 +72,7 @@
                                     <p class="mb-2">
                                         {{contact.name}}
                                     </p>
-                                    <p class="over-txt txt-grey fs-7 m-0">
+                                    <p class="over-txt txt-grey fs-7 m-0" >
                                         {{contact.messages[contact.messages.length - 1].text}}
                                     </p>
                                 </div>
@@ -111,12 +111,17 @@
                             <div class="status-box d-flex flex-wrap">
                                     <!-- SINGLE MESSAGE -->
                                 <div class="p-2 position-relative"
-                                    v-for="el in dropDown"
                                     :class=" message.status">
                                     <i class="drop-click fas fa-angle-down position-absolute txt-grey fs-5"
-                                        @click="el = !el, log(el)">
+                                        @click="chatClick(index)">
                                     </i>
-                                    <p>{{message.text}} {{el}}</p>
+                                    <div class="drop position-absolute text-end"
+                                        :class=" (chatCounter == index && click) ? 'visible' : '' ">
+                                        <p class="m-0">Info</p>
+                                        <p class="m-0" 
+                                        @click="cancel(index)">Elimina</p>
+                                    </div>
+                                    <p>{{message.text}}</p>
                                     <span class="float-end txt-grey fs-7">
                                         {{message.date}}
                                     </span>
