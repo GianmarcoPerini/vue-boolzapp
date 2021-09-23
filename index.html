@@ -62,7 +62,7 @@
                             @click="goTo(index)" 
                             v-for="(contact, index) in contacts" 
                             :class=" (count == index) ? 'active' : '' "
-                            v-if="filter(contact)">
+                            v-if="filter(contact) || chatFilter(contact) ">
                             <div class="user-img">
                                 <img class="w-100 rounded-circle"
                                 :src=" 'img/avatar' + contact.avatar + '.jpg' ">
@@ -110,8 +110,9 @@
                                 <!-- MESSAGES -->
                             <div class="status-box d-flex flex-wrap">
                                     <!-- SINGLE MESSAGE -->
-                                <div class="p-2 position-relative"
-                                    :class=" message.status">
+                                <div class=" p-2 position-relative"
+                                    :class=" message.status"
+                                    v-if="message.text.length >= 1">
                                     <i class="drop-click fas fa-angle-down position-absolute txt-grey fs-5"
                                         @click="chatClick(index)">
                                     </i>
@@ -119,13 +120,19 @@
                                         :class=" (chatCounter == index && click) ? 'visible' : '' ">
                                         <p class="m-0">Info</p>
                                         <p class="m-0" 
-                                        @click="cancel(index)">Elimina</p>
+                                        @click="cancel(index)">Elimina
+                                        </p>
+                                        <p class="m-0" 
+                                        :class=" (message.status == 'received') ? 'd-none' : '' "
+                                        @click="modifing(message.text, index)">Modifica
+                                        </p>
                                     </div>
                                     <p>{{message.text}}</p>
                                     <span class="float-end txt-grey fs-7">
                                         {{message.date}}
                                     </span>
                                 </div>
+                                <div class="d-none" v-else></div>
                             </div>
                         </div>
                     </div>
@@ -135,7 +142,7 @@
                         <input class="ms-3 fs-6 h-50 rounded border-0 ps-3"
                         type="text" placeholder="Scrivi un messaggio..." 
                         v-model="msg" 
-                        @keyup.enter="submit(count)">
+                        @keyup.enter="submit(count), sentModify(), log(modify)">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
                     </div>
                 </div>

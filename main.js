@@ -98,6 +98,8 @@ let app = new Vue({
         count: 0,
         toFilter: '',
         chatCounter: 0,
+        modify: false,
+        modifyIndex: 0,
 
     },
 
@@ -105,6 +107,11 @@ let app = new Vue({
             // DOPO AVER CREATO UNA VARIABILE INIZIALIZZATA A 0 (count) LA FUNZIONE PRENDE L'INDICE CHE GLI VIENE PASSATO E FA SI CHE COUNT SIA UGALE A TALE INDICE
         goTo: function(index){
             this.count = index
+        },
+            // AL CLICK FA USCIRE UN DROPDOWN MENÙ
+        chatClick: function(x){
+            this.chatCounter = x
+            this.click = !this.click
         },
             // INVIA IL DATO INSERITO NELL'INPUT PER POTER ESSERE VISUALIZZATO IN PAGINA
         submit: function(thatCount){
@@ -131,11 +138,17 @@ let app = new Vue({
         filter: function(el){
             return el.name.toLowerCase().includes(this.toFilter.toLowerCase())
         },
-            // AL CLICK FA USCIRE UN DROPDOWN MENÙ
-        chatClick: function(x){
-            this.chatCounter = x
-            this.click = !this.click
+        chatFilter: function(el){
+            let check = false
+            el.messages.forEach(el => {
+                if(el.text.toLowerCase().includes(this.toFilter.toLowerCase())){
+                    check = true
+                    return check                    
+                }
+            }) 
+            return check
         },
+
             // CANCELLA UN DETERMINATO MESSAGGIO E RISETTA IL VALORE DI CLICK A FALSE 
         cancel: function(x){
             this.contacts[this.count].messages.splice(x, 1);
@@ -145,6 +158,36 @@ let app = new Vue({
             }
             this.click = false       
         },
+            // AGGIUNGE L'OPZIONE DI MODICA DEI MESSAGGI
+        modifing: function(message, index){
+            this.msg = message;
+            this.click = false 
+            this.modify = true;
+            this.modifyIndex = index
+        },
+            // PUSHA LA MODIFICA FATTA AL MESSAGGIO ED ELIMINA QUELLO NON MODIFICATO
+        sentModify: function (){
+            
 
+            
+            let d = new Date
+            if( this.modify == true) {
+                this.contacts[this.count].messages.splice(this.modifyIndex, 1);
+                newMessage = {
+                    date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getUTCSeconds()}`,
+                    text: this.msg,
+                    status: 'received'
+                }
+                this.contacts[this.count].messages.push(newMessage)
+                this.modify = !this.modify
+            }
+            
+            
+            
+        },
+
+        log: function(x){
+            console.log(x);
+        }
     },
 })
