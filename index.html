@@ -24,7 +24,7 @@
                 <!-- USER NAME COLUMN -->
 
                 <div class="user p-0 col-3"  @click="click = false">
-                        <!-- SEC_USER NAME -->
+                        <!-- SEC_USER NAME --> 
                     <div class="user-name col-12 d-flex align-items-center pe-3">
                         <div class="user-img">
                             <img class="w-100 rounded-circle" src="img/avatar_io.jpg">
@@ -142,7 +142,7 @@
                         <input class="ms-3 fs-6 h-50 rounded border-0 ps-3"
                         type="text" placeholder="Scrivi un messaggio..." 
                         v-model="msg" 
-                        @keyup.enter="submit(count), sentModify(), log(modify)">
+                        @keyup.enter="submit(count), sentModify()">
                         <i class="fas fa-microphone ms-4 fs-4 text-secondary"></i>
                     </div>
                 </div>
