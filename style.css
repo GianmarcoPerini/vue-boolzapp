@@ -52,6 +52,7 @@
     color: rgba(0, 0, 0, 0.3);
 }
 
+
     /* SEC_2 */
 
 .is-online{
@@ -97,7 +98,6 @@
 
     /* SEC_4 */
 
-
 .chat{
     height: 300px;
     overflow-y: auto;
@@ -110,6 +110,9 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+
+
 
 
 
@@ -131,6 +134,7 @@
     padding: 20px 30px;
 }
 
+
     /* SEC_2 */
 
 .chat-string{
@@ -141,6 +145,7 @@
 .chat-string input{
     width: 80%;
 }
+
 
     /* DROP DOWN */
 
@@ -182,6 +187,7 @@
     font-weight: bold;
     color: rgb(133, 133, 133);
 }
+
 
     /* FUNCTIONAL CLASS */
 

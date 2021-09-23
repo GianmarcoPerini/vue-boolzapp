@@ -23,7 +23,7 @@
 
                 <!-- USER NAME COLUMN -->
 
-                <div class="user p-0 col-3">
+                <div class="user p-0 col-3"  @click="click = false">
                         <!-- SEC_USER NAME -->
                     <div class="user-name col-12 d-flex align-items-center pe-3">
                         <div class="user-img">
@@ -105,7 +105,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                         <!-- SEC_LIVE CHAT -->
-                    <div class="chat-live overflow-auto">
+                    <div class="chat-live overflow-auto"  >
                         <div class="" v-for="(message, index) in contacts[count].messages">
                                 <!-- MESSAGES -->
                             <div class="status-box d-flex flex-wrap">

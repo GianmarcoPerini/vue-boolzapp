@@ -93,10 +93,6 @@ let app = new Vue({
             },
         ],
 
-        
-        
-            
-        
         click: false,
         msg: '',
         count: 0,
@@ -135,22 +131,20 @@ let app = new Vue({
         filter: function(el){
             return el.name.toLowerCase().includes(this.toFilter.toLowerCase())
         },
-
-        log: function(x){
-            console.log(x);
-        },
-
+            // AL CLICK FA USCIRE UN DROPDOWN MENÙ
         chatClick: function(x){
             this.chatCounter = x
             this.click = !this.click
         },
-
+            // CANCELLA UN DETERMINATO MESSAGGIO E RISETTA IL VALORE DI CLICK A FALSE 
         cancel: function(x){
             this.contacts[this.count].messages.splice(x, 1);
             if(this.contacts[this.count].messages == 0) {
                 newMessage = {status: 'd-none'}
                 this.contacts[this.count].messages.push(newMessage)
-            }            
+            }
+            this.click = false       
         },
+
     },
 })
